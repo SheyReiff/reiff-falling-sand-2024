@@ -1,4 +1,5 @@
 package reiff.fallingsand;
+
 public class Sand {
     private int[][] field = new int[3][3];
 
