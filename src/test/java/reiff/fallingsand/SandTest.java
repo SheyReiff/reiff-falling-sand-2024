@@ -33,6 +33,7 @@ class SandTest {
     public void fall(){
         //given
         Sand sand = new Sand();
+        sand.put(1,0);
         //when
         sand.fall();
         //then

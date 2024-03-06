@@ -1,6 +1,7 @@
 package reiff.fallingsand;
 public class Sand {
     private int[][] field = new int[3][3];
+
     public String toString() {
 
         StringBuilder builder = new StringBuilder();
@@ -31,7 +32,16 @@ public class Sand {
     }
 
     public void fall() {
-        //Moves all sand down one square
-
+        for (int y = 1; y >= 0; y--) {
+            for (int x = 0; x < 3; x++) {
+                if (field[y][x] == 1 && field[y + 1][x] == 0) {
+                    // Move sand down
+                    field[y][x] = 0;
+                    field[y + 1][x] = 1;
+                }
+            }
+        }
     }
+
 }
+
