@@ -12,7 +12,7 @@ public class Sand {
 
     public Sand(int width, int height, Random random) {
         field = new int[height][width];
-        this.random = new Random();
+        this.random = random;
     }
 
 
@@ -46,41 +46,72 @@ public class Sand {
     }
 
     public void fall() {
+        // moves all sand down one square
         for (int y = field.length - 2; y >= 0; y--) {
             for (int x = 0; x < field[y].length; x++) {
-
                 if (field[y][x] == 1) {
-                    //does the sand fall straight down?
                     if (field[y + 1][x] == 0) {
                         field[y][x] = 0;
                         field[y + 1][x] = 1;
                         continue;
                     }
 
-                    if (random.nextBoolean()) {
-                        if (field[y + 1][x + 1] == 0) {
-                            //does the sand fall to the right
-                            field[y][x] = 0;
-                            field[y + 1][x + 1] = 1;
-                        } else if (field[y + 1][x - 1] == 0) {
-                            //does the sand fall to the left
-                            field[y][x] = 0;
-                            field[y + 1][x - 1] = 1;
-                        }
-                    } else {
-                        if (field[y + 1][x - 1] == 0) {
-                            //does the sand fall to the left
-                            field[y][x] = 0;
-                            field[y + 1][x - 1] = 1;
-                        } else if (field[y + 1][x + 1] == 0) {
-                            //does the sand fall to the right
-                            field[y][x] = 0;
-                            field[y + 1][x + 1] = 1;
-                        }
+                    boolean rightFirst = random.nextBoolean();
+                    int direction1 = rightFirst ? +1 : -1;
+                    int direction2 = rightFirst ? -1 : +1;
+
+                    if (field[y + 1][x + direction1] == 0) {
+                        field[y][x] = 0;
+                        field[y + 1][x + direction1] = 1;
+                    } else if (field[y + 1][x + direction2] == 0) {
+                        field[y][x] = 0;
+                        field[y + 1][x + direction2] = 1;
                     }
                 }
             }
         }
     }
+
+    public void randomSand(int n) {
+        int freeSpaces = countFreeSpaces();
+
+        if (freeSpaces == 0) {
+            throw new IllegalStateException("Field is completely filled.");
+        }
+
+        if (freeSpaces < n) {
+            System.out.println("Warning: Not enough free spaces for " + n + " sand particles.");
+            n = freeSpaces;
+        }
+
+        for (int i = 0; i < n; i++) {
+            boolean placed = false;
+            while (!placed) {
+                int x = random.nextInt(field[0].length);
+                int y = random.nextInt(field.length);
+                if (field[y][x] == 0) {
+                    put(x, y);
+                    placed = true;
+                }
+            }
+        }
+    }
+
+    private int countFreeSpaces() {
+        int count = 0;
+        for (int[] row : field) {
+            for (int cell : row) {
+                if (cell == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
 }
+
+
+
+
 
