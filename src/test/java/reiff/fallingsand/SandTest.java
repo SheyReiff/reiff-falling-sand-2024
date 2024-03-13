@@ -73,10 +73,10 @@ class SandTest {
     public void fallToTheright() {
         //given
         Sand sand = new Sand(3, 3);
-        
+
         sand.put(1, 1);
         sand.put(1, 2);
-        sand.put(0, 2);//left
+        sand.put(0, 2); //left
 
         //when
         sand.fall();
@@ -90,7 +90,7 @@ class SandTest {
         Sand sand = new Sand(3, 3);
         sand.put(1, 1);
         sand.put(1, 2);
-        sand.put(2, 2);//right
+        sand.put(2, 2); //right
         //when
         sand.fall();
         //then
