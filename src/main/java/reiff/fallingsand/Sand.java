@@ -60,10 +60,13 @@ public class Sand {
                     int direction1 = rightFirst ? +1 : -1;
                     int direction2 = rightFirst ? -1 : +1;
 
-                    if (y + 1 < field.length && x + direction1 >= 0 && x + direction1 < field[y].length && field[y + 1][x + direction1] == 0) {
+                    boolean validRightMove = x + direction1 >= 0 && x + direction1 < field[y].length;
+                    boolean validLeftMove = x + direction2 >= 0 && x + direction2 < field[y].length;
+
+                    if (validRightMove && field[y + 1][x + direction1] == 0) {
                         field[y][x] = 0;
                         field[y + 1][x + direction1] = 1;
-                    } else if (y + 1 < field.length && x + direction2 >= 0 && x + direction2 < field[y].length && field[y + 1][x + direction2] == 0) {
+                    } else if (validLeftMove && field[y + 1][x + direction2] == 0) {
                         field[y][x] = 0;
                         field[y + 1][x + direction2] = 1;
                     }
