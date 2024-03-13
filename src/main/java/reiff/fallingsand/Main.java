@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Sand sand = new Sand(10, 50);
+        Sand sand = new Sand(50, 10);
 
         sand.randomSand(50);
 
