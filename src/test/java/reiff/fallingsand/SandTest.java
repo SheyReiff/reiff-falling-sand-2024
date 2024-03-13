@@ -70,7 +70,7 @@ class SandTest {
 
 
     @Test
-    public void fallToTheright() {
+    public void fallToTheRight() {
         //given
         Sand sand = new Sand(3, 3);
 
@@ -85,6 +85,21 @@ class SandTest {
     }
 
     @Test
+    public void fallToTheRightOutOfBound() {
+        //given
+        Sand sand = new Sand(3, 3);
+
+        sand.put(0, 1);
+        sand.put(1, 2);
+        sand.put(0, 2); //left
+
+        //when
+        sand.fall();
+        //then
+        assertEquals("000\n100\n110\n", sand.toString());
+    }
+
+    @Test
     public void fallToTheLeft() {
         //given
         Sand sand = new Sand(3, 3);
@@ -95,6 +110,19 @@ class SandTest {
         sand.fall();
         //then
         assertEquals("000\n000\n111\n", sand.toString());
+    }
+
+    @Test
+    public void fallToTheLeftOutOfBound() {
+        //given
+        Sand sand = new Sand(3, 3);
+        sand.put(2, 1);
+        sand.put(1, 2);
+        sand.put(2, 2); //right
+        //when
+        sand.fall();
+        //then
+        assertEquals("000\n001\n011\n", sand.toString());
     }
 
     @Test

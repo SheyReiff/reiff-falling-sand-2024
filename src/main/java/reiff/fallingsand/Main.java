@@ -10,7 +10,6 @@ public class Main {
 
         sand.randomSand(50);
 
-        displaySand(sand);
 
         System.out.println("Press Enter to make sand fall. Press 'q' to quit.");
 
@@ -19,7 +18,7 @@ public class Main {
 
             if (input.isEmpty()) {
                 sand.fall();
-                displaySand(sand);
+                System.out.println(sand);
             } else if (input.equalsIgnoreCase("q")) {
                 break;
             }
@@ -28,10 +27,4 @@ public class Main {
         scanner.close();
     }
 
-    private static void displaySand(Sand sand) {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
-        System.out.println(sand.toString());
-    }
 }

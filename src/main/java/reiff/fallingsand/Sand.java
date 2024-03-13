@@ -60,29 +60,20 @@ public class Sand {
                     int direction1 = rightFirst ? +1 : -1;
                     int direction2 = rightFirst ? -1 : +1;
 
-                    if (field[y + 1][x + direction1] == 0) {
+                    if (y + 1 < field.length && x + direction1 >= 0 && x + direction1 < field[y].length && field[y + 1][x + direction1] == 0) {
                         field[y][x] = 0;
                         field[y + 1][x + direction1] = 1;
-                    } else if (field[y + 1][x + direction2] == 0) {
+                    } else if (y + 1 < field.length && x + direction2 >= 0 && x + direction2 < field[y].length && field[y + 1][x + direction2] == 0) {
                         field[y][x] = 0;
                         field[y + 1][x + direction2] = 1;
                     }
+
                 }
             }
         }
     }
 
     public void randomSand(int n) {
-        int freeSpaces = countFreeSpaces();
-
-        if (freeSpaces == 0) {
-            throw new IllegalStateException("Field is completely filled.");
-        }
-
-        if (freeSpaces < n) {
-            System.out.println("Warning: Not enough free spaces for " + n + " sand particles.");
-            n = freeSpaces;
-        }
 
         for (int i = 0; i < n; i++) {
             boolean placed = false;
@@ -95,18 +86,6 @@ public class Sand {
                 }
             }
         }
-    }
-
-    private int countFreeSpaces() {
-        int count = 0;
-        for (int[] row : field) {
-            for (int cell : row) {
-                if (cell == 0) {
-                    count++;
-                }
-            }
-        }
-        return count;
     }
 
 }
