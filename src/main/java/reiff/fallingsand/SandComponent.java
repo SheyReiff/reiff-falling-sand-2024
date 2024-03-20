@@ -20,7 +20,7 @@ public class SandComponent extends JComponent {
         for (int y = 0; y < sand.getHeight(); y++) {
             for (int x = 0; x < sand.getWidth(); x++) {
                 if (sand.get(x, y) == 1) {
-                    g.fillRect(x, y, 3, 3);
+                    g.fillRect(x, y, 1, 1);
                 }
             }
         }
