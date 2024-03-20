@@ -90,9 +90,9 @@ class SandTest {
         Sand sand = new Sand(3, 3);
 
         sand.put(0, 1);
-        sand.put(1, 2);
         sand.put(0, 2); //left
-
+        sand.put(1, 2);
+        
         //when
         sand.fall();
         //then
