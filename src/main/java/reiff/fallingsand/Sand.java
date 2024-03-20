@@ -15,6 +15,13 @@ public class Sand {
         this.random = random;
     }
 
+    public int getWidth() {
+        return field[0].length;
+    }
+
+    public int getHeight() {
+        return field.length;
+    }
 
     public String toString() {
 
