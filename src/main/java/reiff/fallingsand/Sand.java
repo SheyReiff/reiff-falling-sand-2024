@@ -88,10 +88,10 @@ public class Sand {
     /**
      * Moves the sand form x1, y1, to x2, y2
      *
-     * @param startX
-     * @param startY
-     * @param width
-     * @param height
+     * @param startX -
+     * @param startY -
+     * @param width  -
+     * @param height -
      * @return probability that an empty spot in the rectangle will be sand
      */
 
@@ -109,10 +109,10 @@ public class Sand {
     /**
      * Moves the sand form x1, y1, to x2, y2
      *
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
+     * @param x1 -
+     * @param y1 -
+     * @param x2 -
+     * @param y2 -
      * @return true if the move was successful, otherwise false
      */
     public boolean move(int x1, int y1, int x2, int y2) {
