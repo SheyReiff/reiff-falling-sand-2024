@@ -37,7 +37,7 @@ class SandTest {
     public void fall() {
         //given
         Sand sand = new Sand(3, 3);
-        sand.put(1, 0);
+        sand.load("010\n000\n000\n");
         //when
         sand.fall();
         //then
@@ -92,7 +92,7 @@ class SandTest {
         sand.put(0, 1);
         sand.put(0, 2); //left
         sand.put(1, 2);
-        
+
         //when
         sand.fall();
         //then
@@ -164,5 +164,61 @@ class SandTest {
         //then
         assertEquals("000\n000\n110\n", sand.toString());
     }
+
+    @Test
+    public void resizeSmaller() {
+        //given
+
+        Sand sand = new Sand(3, 3);
+        sand.put(1, 1);
+
+        //when
+        sand.resize(2, 2);
+        //then
+        assertEquals("00\n01\n", sand.toString());
+
+    }
+
+    @Test
+    public void resizeLarger() {
+        //given
+
+        Sand sand = new Sand(2, 2);
+        sand.put(1, 1);
+
+        //when
+        sand.resize(3, 3);
+        //then
+        assertEquals("000\n010\n000\n", sand.toString());
+
+    }
+
+    @Test
+    public void load() {
+        //given
+        Sand sand = new Sand(3, 3);
+        sand.put(0, 0);
+
+
+        //when
+        sand.load("000\n010\n000\n");
+
+        //then
+        assertEquals("000\n010\n000\n", sand.toString());
+    }
+
+    @Test
+    public void putMultiple() {
+        //given
+        Sand sand = new Sand(5, 5);
+
+
+        //when
+        sand.put(1, 1, 3, 3, 1.00);
+
+        //then
+        assertEquals("00000\n01110\n01110\n01110\n00000\n", sand.toString());
+    }
+
 
 }
