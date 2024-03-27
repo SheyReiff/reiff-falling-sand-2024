@@ -15,7 +15,7 @@ public class SandFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        sand.randomSand(400);
+        sand.randomSand(4000);
 
         SandComponent sandComponent = new SandComponent(sand);
         add(sandComponent, BorderLayout.CENTER);
